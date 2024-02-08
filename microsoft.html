@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: #fff;
+                color: #000;
+                font-size: 15px;
+                line-height: 1.5;
+            }
+            
+            a {
+                color: #262626;
+                text-decoration: none;
+            }
+            
+            ul {
+                list-style: none;
+            }
+            
+            .container {
+                width: 90%;
+                max-width: 1100px;
+                margin: auto;
+            }
+            
+            /* Nav */
+            .main-nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                height: 60px;
+                padding: 20px 0;
+                font-size: 13px;
+            }
+            
+            .main-nav .logo {
+                width: 110px;
+            }
+            
+            .main-nav ul {
+                display: flex;
+            }
+            
+            .main-nav ul li {
+                padding: 0 10px;
+            }
+            
+            .main-nav ul li a {
+                padding-bottom: 2px;
+            }
+            
+            .main-nav ul li a:hover {
+                border-bottom: 2px solid #262626;
+            }
+            
+            .main-nav ul.main-menu {
+                flex: 1;
+                margin-left: 20px;
+            }
+            
+            .menu-btn {
+                cursor: pointer;
+                position: absolute;
+                top: 20px;
+                right: 30px;
+                z-index: 2;
+                display: none;
+            }
+            
+            .btn {
+                cursor: pointer;
+                display: inline-block;
+                border: 0;
+                font-weight: bold;
+                padding: 10px 20px;
+                background: #262626;
+                color: #fff;
+                font-size: 15px;;
+            }
+            
+            .btn:hover {
+                opacity: 0.9;
+            }
+            
+            .dark {
+                color: #fff;
+            }
+            
+            .dark .btn {
+                background: #f4f4f4;
+                color: #333;
+            }
+            
+            /* Showcase */
+            .showcase {
+                width: 100%;
+                height: 400px;
+                background: url('https://i.ibb.co/zGSDGCL/slide1.png') no-repeat center center/cover;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                justify-content: flex-end;
+                padding-bottom: 50px;
+                margin-bottom: 20px;
+            }
+            
+            .showcase h2, .showcase p {
+                margin-bottom: 10px;
+            }
+            
+            .showcase .btn {
+                margin-top: 20px;
+            }
+            
+            /* Home cards */
+            .home-cards {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                grid-gap: 20px;
+                margin-bottom: 40px;
+            }
+            
+            .home-cards img {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            
+            .home-cards h3 {
+                margin-bottom: 5px;
+            }
+            
+            .home-cards a {
+                display: inline-block;
+                padding-top: 10px;
+                color: #0067b8;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+            
+            .home-cards a:hover i {
+                margin-left: 10px;
+            }
+            
+            /* Xbox */
+            .xbox {
+                width: 100%;
+                height: 350px;
+                background: url('https://i.ibb.co/tBJGPD9/xbox.png') no-repeat center center/cover;
+                margin-bottom: 20px;
+            }
+            
+            .xbox .content {
+                width: 40%;
+                padding: 50px 0 0 30px;
+            }
+            
+            .xbox p, .carbon p {
+                margin: 10px 0 20px;
+            }
+            
+            /* Carbon */
+            .carbon {
+                width: 100%;
+                height: 350px;
+                background: url('https://i.ibb.co/72cgtsz/carbon.jpg') no-repeat center center/cover;
+            }
+            
+            .carbon .content {
+                width: 55%;
+                padding: 100px 0 0 30px;
+            }
+            
+            /* Follow */
+            .follow {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                margin: 30px 0 30px;
+            }
+            
+            .follow * {
+                margin-right: 10px;
+            }
+            
+            /* Links */
+            .links {
+                background: #f2f2f2;
+                color: #616161;
+                font-size: 12px;
+                padding: 35px 0;
+            }
+            
+            .links-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 20px;
+                display: grid;
+                grid-template-columns: repeat(6, 1fr);
+                grid-gap: 10px;
+                align-items: flex-start;
+                justify-content: center;
+            }
+            
+            .links li {
+                line-height: 2.8;
+            }
+            
+            /* Footer */
+            .footer {
+                background: #f2f2f2;
+                color: #616161;
+                font-size: 12px;
+                padding: 20px 0;
+            }
+            
+            .footer-inner {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 0 20px 0 20px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .footer div {
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+            }
+            
+            .footer div i {
+                margin-right: 10px;
+            }
+            
+            .footer ul {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+            .footer li {
+                margin-right: 30px;
+                margin-bottom: 20px;
+            }
+            
+            @media(max-width: 700px) {
+                .menu-btn {
+                    display: block;
+                }
+                
+                .menu-btn:hover {
+                    opacity: 0.5;
+                }
+                
+                .main-nav ul.right-menu {
+                    margin-right: 50px;
+                }
+                
+                .main-nav ul.main-menu {
+                    display: block;
+                    position: absolute;
+                    top:0;
+                    left: 0;
+                    background: #f2f2f2;
+                    width: 50%;
+                    height: 100%;
+                    border-right: #ccc 1px solid;
+                    opacity: 0.9;
+                    padding: 30px;
+                    transform: translateX(-500px);
+                    transition: transform 0.5s ease-in-out;
+                }
+                
+                .main-nav ul.main-menu li {
+                    padding: 10px;
+                    border-bottom: #ccc solid 1px;
+                    font-size: 14px;
+                }
+                
+                .main-nav ul.main-menu li:last-child {
+                    border-bottom: 0;
+                }
+                
+                .main-nav ul.main-menu.show {
+                    transform: translateX(-20px);
+                }
+                
+                .home-cards {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+                
+                .xbox .content p {
+                    display: none;
+                }
+                
+                .xbox .content h2 {
+                    margin-bottom: 20px;
+                }
+                
+                .carbon .content {
+                    width: 85%;
+                }
+                
+                .links .links-inner {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            
+            @media(max-width: 500px) {
+                .home-cards {
+                    grid-template-columns: 1fr;
+                }
+                
+                .links .links-inner {
+                    grid-template-columns: 1fr;
+                }
+                
+                .links .links-inner ul {
+                    margin-bottom: 20px;
+                }
+            }
+            
+        </style>
+    </head>
+    <head>
+        <div class="menu-btn">
+            <i class="fas fa-bars fa-2x"></i>
+          </div>
+        
+          <div class="container">
+            <!-- Nav -->
+            <nav class="main-nav">
+              <img src="https://i.ibb.co/wwLhz98/logo.png" alt="Microsoft" class="logo">
+        
+              <ul class="main-menu">
+                <li><a href="#">Office</a></li>
+                <li><a href="#">Windows</a></li>
+                <li><a href="#">Software</a></li>
+                <li><a href="#">Xbox</a></li>
+                <li><a href="#">Специальные предложения</a></li>
+                <li><a href="#">Поддерживать</a></li>
+              </ul>
+        
+              <ul class="right-menu">
+                <li>
+                  <a href="#">
+                    <i class="fas fa-search"></i>
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    <i class="fas fa-shopping-cart"></i>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+        
+            <header class="showcase">
+              <h2>Поверхностные предложения</h2>
+              <p>
+                Некоторые поверхности уже в продаже — экономьте, пока есть в наличии
+              </p>
+              <a href="#" class="btn">
+                Купить сейчас <i class="fas fa-chevron-right"></i>
+              </a>
+            </header>
+        
+            <section class="home-cards">
+              <div>
+                <img src="https://i.ibb.co/LZPVKq9/card1.png" alt="">
+                <h3>Новый Surface Pro 7</h3>
+                <p>
+                    Посмотрите, как Кэти Сауэрс, ассистент. Тренер команды 49ers, использует Surface Pro 7.
+                    воплотить свои планы в жизнь.
+                </p>
+                <a href="#">Узнать больше <i class="fas fa-chevron-right"></i></a>
+              </div>
+              <div>
+                <img src="https://i.ibb.co/KjGFHVJ/card2.png" alt="" />
+                <h3>Новый ноутбук Surface 3</h3>
+                <p>
+                    Выразите себя мощно с помощью тонкого, легкого и элегантного дизайна.
+                    более высокая производительность и время автономной работы до 11,5 часов.
+                </p>
+                <a href="#">Узнать больше <i class="fas fa-chevron-right"></i></a>
+              </div>
+              <div>
+                <img src="https://i.ibb.co/2cnshH6/card3.png" alt="" />
+                <h3>Сэкономьте 150 долларов + бесплатный контроллер</h3>
+                <p>
+                    Купите консоль Xbox One X и получите вдвое больше удовольствия, выбрав бесплатную версию
+                    дополнительный контроллер. От 349 долларов.
+                </p>
+                <a href="#">Узнать больше <i class="fas fa-chevron-right"></i></a>
+              </div>
+              <div>
+                <img src="https://i.ibb.co/G57P0Pb/card4.png" alt="" />
+                <h3>Новый Microsoft Edge</h3>
+                <p>
+                    Ожидайте большего. Производительность мирового класса, больше конфиденциальности, больше
+                    производительность и большая ценность.
+                </p>
+                <a href="#">Узнать больше <i class="fas fa-chevron-right"></i></a>
+              </div>
+            </section>
+        
+            <section class="xbox">
+              <div class="content">
+                <h2>Xbox Game Pass Ultimate</h2>
+                <p>Xbox Game Pass Ultimate Xbox Live Gold и более 100 высококачественных
+                    консольные и компьютерные игры. Играйте вместе с друзьями и открывайте свои
+                    следующая любимая игра.</p>
+                  <a href="#" class="btn">
+                    Присоединяйся сейчас <i class="fas fa-chevron-right"></i>
+                  </a>
+              </div>
+            </section>
+        
+              <section class="home-cards">
+                <div>
+                  <img src="https://i.ibb.co/zVqhWn2/card5.png" alt="" />
+                  <h3>Microsoft Teams</h3>
+                  <p>
+                    Раскройте силу своей команды.
+                  </p>
+                  <a href="#">Купить сейчас <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div>
+                  <img src="https://i.ibb.co/mGZcxcn/card6.jpg" alt="" />
+                  <h3>Раскройте силу обучения</h3>
+                  <p>
+                    Подготовьте учащихся к будущему с помощью устройств с Windows 10. От 219 долларов.
+                  </p>
+                  <a href="#">Купить сейчас <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div>
+                  <img src="https://i.ibb.co/NpPvVHj/card7.png" alt="" />
+                  <h3>Windows 10 Корпоративная</h3>
+                  <p>
+                    Загрузите бесплатную 90-дневную пробную версию для ИТ-специалистов.
+                  </p>
+                  <a href="#">Скачать сейчас <i class="fas fa-chevron-right"></i></a>
+                </div>
+                <div>
+                  <img src="https://i.ibb.co/LkP4L5T/card8.png" alt="" />
+                  <h3>Откройте для себя Кубернетес</h3>
+                  <p>
+                    Узнайте, как работает Kubernetes, и начните работу с облачным приложением
+                     развитие сегодня.
+                  </p>
+                  <a href="#">Начать <i class="fas fa-chevron-right"></i></a>
+                </div>
+              </section>
+              
+              <section class="carbon dark">
+                <div class="content">
+                  <h2>Стремление к сокращению выбросов углекислого газа</h2>
+                  <p>Microsoft станет углеродно-отрицательной к 2030 году, а к 2050 году мы удалим
+                    весь углерод, выброшенный компанией с момента ее основания в 1975 году.</p>
+                    <a href="#" class="btn">
+                        Узнать больше <i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+              </section>
+        
+            </div>
+
+              <section class="links">
+                <div class="links-inner">
+                  <ul>
+                    <li><h3>Что нового?</h3></li>
+                    <li><a href="#">Microsfot 365</a></li>
+                  </ul>
+                  <ul>
+                    <li><h3>Microsoft Store</h3></li>
+                    <li><a href="#">Профиль ученой записи</a></li>
+                    <li><a href="#">Возврат товаров</a></li>
+                    <li><a href="#">Отслеживание заказа</a></li>
+                  </ul>
+                  <ul>
+                    <li><h3>Для образования</h3></li>
+                    <li><a href="#">Microsoft для образования</a></li>
+                    <li><a href="#">Устройства для образования</a></li>
+                    <li><a href="#">Microsoft Teams для образования</a></li>
+                    <li><a href="#">Microsoft 365 для образования</a></li>
+                    <li><a href="#">Office для образования</a></li>
+                    <li><a href="#">Подготовка и профессиональное развитие преподавателей</a></li>
+                    <li><a href="#">Специальные предложения для учащихся и родителей</a></li>
+                    <li><a href="#">Azure для учащихся</a></li>
+                  </ul>
+                  <ul>
+                    <li><h3>Для бизнеса</h3></li>
+                    <li><a href="#">Microsoft Cloud</a></li>
+                    <li><a href="#">Microsoft Security</a></li>
+                    <li><a href="#">Azure</a></li>
+                    <li><a href="#">Dynamics 365</a></li>
+                    <li><a href="#">Microsoft 365</a></li>
+                    <li><a href="#">Microsoft Advertising</a></li>
+                    <li><a href="#">Microsoft для промышленности</a></li>
+                    <li><a href="#">Microsoft Teams</a></li>
+                  </ul>
+                  <ul>
+                    <li><h3>Разработчики и ИТ</h3></li>
+                    <li><a href="#">Центр разработчиков</a></li>
+                    <li><a href="#">Документация</a></li>
+                    <li><a href="#">Microsoft Learn</a></li>
+                    <li><a href="#">Сообщество Microsoft Tech</a></li>
+                    <li><a href="#">Azure Marketplace</a></li>
+                    <li><a href="#">AppSource</a></li>
+                    <li><a href="#">Microsoft Power Platform</a></li>
+                    <li><a href="#">Visual Studio</a></li>
+                  </ul>
+                  <ul>
+                    <li><h3>Компания</h3></li>
+                    <li><a href="#">Вакансии</a></li>
+                    <li><a href="#">О корпорации Майкрософт</a></li>
+                    <li><a href="#">Новости компании</a></li>
+                    <li><a href="#">Конфиденциальность в Microsoft</a></li>
+                    <li><a href="#">Инвесторы</a></li>
+                  </ul>
+                </div>
+              </section>
+        
+              <footer class="footer">
+                <div class="footer-inner">
+                  <div><i class="fas fa-globe fa-2x"></i> Русский (Казахстан)</div>
+                  <ul>
+                    <li><a href="#"Карта сайта></a></li>
+                  <li><a href="#">Свяжитесь с Майкрософт</a></li>
+                  <li><a href="#">Конфиденциальность и файлы cookie</a></li>
+                  <li><a href="#">Условия эксплуатации</a></li>
+                  <li><a href="#">Товарные знаки</a></li>
+                  <li><a href="#">Безопасность и экологичность</a></li>
+                  <li><a href="#">О нашей рекламе</a></li>
+                  <li><a href="#">&copy; Microsoft 2024</a></li>
+                  </ul>
+                </div>
+              </footer>
+    </head>
+</html>
